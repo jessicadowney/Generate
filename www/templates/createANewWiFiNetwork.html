@@ -1,19 +1,37 @@
 <ion-view title="Create a new Wi-Fi Network">
-    <ion-content overflow-scroll="true" padding="true" scroll="false" class="has-header has-footer">
+    <ion-content overflow-scroll="true" padding="true" scroll="false" class="has-header">
         <div>
             <p>Let’s get started by naming and setting a password for your new Wi-Fi network.</p>
         </div>
-        <form class="list">
-            <label class="item item-input" name="Network Name">
-                <span class="input-label">Network Name</span>
-                <input type="text" placeholder="">
-            </label>
-            <div class="spacer" style="width: 300px; height: 17px;"></div>
-            <label class="item item-input">
-                <span class="input-label">Password</span>
-                <input type="password" placeholder="">
-            </label>
+
+
+
+
+
+        <form ng-controller="generatePassword" name="myForm" role="form">
+  <div class="item item-input item-floating-label">
+    <span class="input-label">Network Name</span>
+    <input type="text" placeholder="Network Name" ng-model="name.text" autofocus required>
+  </div>
+  <div class="item item-input item-floating-label item-icon-right">
+    <span class="input-label">Network Password</span>
+    <input name="networkpw" type="{{inputType}}"  ng-change="change()" ng-model="password" placeholder="Network Password" required>   
+
+  <a id="generator" ng-click="generate()" ng-hide="myForm.networkpw.$dirty"><i class="icon ion-ios-color-wand"></i></a>
+
+  <a id="revealer" ng-click="showpw()" ng-show="myForm.networkpw.$dirty"><i class="icon ion-eye"></i></a>
+
+
+
+
+  </div>
+
+
+
+
+
+        <a ui-sref="homeWifi9792Created" id="createANewWiFiNetwork-button1" class="button button-positive button-block button-bottom" ng-disabled="!(!!password && !!name.text )">Create network</a>
         </form>
-        <a ui-sref="homeWifi9792Created" id="createANewWiFiNetwork-button1" class="button button-positive  button-block">Create network</a>
+
     </ion-content>
 </ion-view>
